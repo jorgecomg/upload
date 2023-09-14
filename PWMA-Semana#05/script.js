@@ -1,5 +1,5 @@
 var login = true
-var passwordinvisible = true
+
 function switchlogin() {
     login = !login
     updateinfo()
@@ -15,8 +15,10 @@ function updateinfo() {
     <p>E-mail:</p>
     <input type="text" id = "email"><br>
     <p>Senha:</p>
-    <input type="text" id="senha" oninput="maskPassword()">
-    <p><button type="button" onclick = "entrarcad()">Entrar</button></p>
+    <div id="camposenha">
+    <input type="password" id="senha" placeholder = "Senha">
+    <button type="button" onmousedown = "switchsenha()" onmouseup = "switchsenha1()">
+    <img src = "eye-close.png">
     `
     } else {
     document.getElementById('logincad').innerHTML  = `
@@ -29,7 +31,11 @@ function updateinfo() {
     <p>E-mail:</p>
     <input type="text" id = "email"><br>
     <p>Senha:</p>
-    <input type="text" id="senha" oninput="maskPassword()">
+    <div id="camposenha">
+    <input type="password" id="senha" placeholder = "Senha">
+    <button type="button" onmousedown = "switchsenha()" onmouseup = "switchsenha1()">
+    <img src = "eye-close.png">
+    </div>
     <p>Confirme a senha:</p>
     <input type="text" id = "senha1"><br><br>
     <p><button type="button" onclick = "entrarcad()">Cadastrar</button></p>
@@ -39,14 +45,22 @@ function updateinfo() {
 
 function entrarcad() {
     if (login) {
+        email = document.getElementById('email').value;
         if(document.getElementById('email').value != "" && document.getElementById('senha').value != "") {
-            window.alert("logado")
+            window.alert("logado");
+            window.location.href = "index.html";
+            sessionStorage.setItem("usuario", email);
         } else {
             window.alert("erro login")
         }
     } else {
-        if(document.getElementById('email').value != "" && document.getElementById('senha').value != "" && document.getElementById('senha').value == document.getElementById('senha1').value) {
-            window.alert("cadastrado")
+        nome = document.getElementById('nome');
+        if(document.getElementById('nome').value != "" && document.getElementById('email').value != "" && document.getElementById('senha').value != "" && document.getElementById('senha').value == document.getElementById('senha1').value) {
+            
+            sessionStorage.setItem("usuario", nome);
+            window.alert("Cadastro feito com sucesso");
+            window.location.href = "index.html";
+            
         } else {
             window.alert("erro cad")
         }
@@ -54,26 +68,39 @@ function entrarcad() {
 }
 
 function switchsenha() {
-    passwordinvisible = !passwordinvisible
 
     passwordvalue = document.getElementById('senha').value
-    if (!passwordinvisible) {
     
     document.getElementById('camposenha').innerHTML  = `
     <input type="text" id="senha" placeholder = "Senha">
-    <button type="button" onclick = "switchsenha()">
+    <button type="button" onmousedown = "switchsenha()" onmouseup = "switchsenha1()">
     <img src = "eye-open.png">
     </button>
     `
     document.getElementById('senha').value = passwordvalue
-    } else {
+    
+}
+
+function switchsenha1() {
+
+    passwordvalue = document.getElementById('senha').value
+    
+    
         document.getElementById('camposenha').innerHTML  = `
         <input type="password" id="senha" placeholder = "Senha">
-        <button type="button" onclick = "switchsenha()">
+        <button type="button" onmousedown = "switchsenha()" onmouseup = "switchsenha1()">
         <img src = "eye-close.png">
         </button>
         `
         document.getElementById('senha').value = passwordvalue
-    }
     
+}
+
+function updateuser() {
+    usueruser = sessionStorage.getItem("usuario")
+    if (usueruser == null) {
+        document.getElementById("user").innerHTML = "<p><h2>Sem usuário</h2></p>";
+    } else {
+    document.getElementById("user").innerHTML = "<p><h2>"+usueruser+"</h2></p>";
+    }
 }

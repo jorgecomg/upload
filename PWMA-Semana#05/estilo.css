@@ -70,7 +70,7 @@ footer {
 
 #camposenha {
     position: relative;
-    width: 200px;
+    width: 170px;
 }
 #camposenha input {
     display: block;
@@ -91,5 +91,14 @@ footer {
     top: 3px; 
     right: 5px;
     width: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#user {
+    padding: 5px 50px 0px 0px;
 }
 
