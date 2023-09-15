@@ -67,16 +67,23 @@ footer {
     margin: auto;
     display: block;
 }
+#logincad input {
+    width: 300px;
+    font-size: 15px;
+    border-radius: 7px;
+    border: 1px solid;
+    height: 22px;
+}
 
 #camposenha {
     position: relative;
-    width: 170px;
-}
-#camposenha input {
+    width: 300px;
+    height: 20px;
     display: block;
-    width: 100%;
     box-sizing: border-box;
+    
 }
+
 
 #camposenha button {
     border: none;
@@ -88,8 +95,8 @@ footer {
 
 #camposenha img {
     position: absolute; 
-    top: 3px; 
-    right: 5px;
+    top: 5px; 
+    right: 3px;
     width: 20px;
 }
 
@@ -101,4 +108,14 @@ footer {
 #user {
     padding: 5px 50px 0px 0px;
 }
+
+#cadastroswitch {
+    font-family: 'Josefin Sans', sans-serif;
+    border: none;
+    background-color: inherit;
+    color: dodgerblue;
+    font-size: 15px;
+}
+
+
 

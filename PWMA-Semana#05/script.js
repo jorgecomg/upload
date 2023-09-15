@@ -8,37 +8,47 @@ function switchlogin() {
 function updateinfo() {
     if (login) {
     document.getElementById('logincad').innerHTML  = `
-    <p><button type="button" onclick = "switchlogin()">switch</button></p>
+    <p>Não possui uma conta?
+    <button type = "button" onclick = "switchlogin()" id = "cadastroswitch">
+    Clique aqui para se cadastrar</button><p>
     <h1>
     <p>Login</p>
     </h1><br>
     <p>E-mail:</p>
-    <input type="text" id = "email"><br>
+    <input type="text" id = "email" placeholder = "E-mail"><br>
     <p>Senha:</p>
     <div id="camposenha">
     <input type="password" id="senha" placeholder = "Senha">
     <button type="button" onmousedown = "switchsenha()" onmouseup = "switchsenha1()">
     <img src = "eye-close.png">
+    </button>
+    </div>
+    <p><button type="button" onclick = "entrarcad()">Entrar</button></p>
+    
     `
     } else {
     document.getElementById('logincad').innerHTML  = `
-    <p><button type="button" onclick = "switchlogin()">switch</button></p>
+    <p>Já possui uma conta?
+    <button type = "button" onclick = "switchlogin()" id = "cadastroswitch">
+    Clique aqui para fazer login</button><p>
     <h1>
     <p>Cadastro</p>
     </h1><br>
     <p>Nome:</p>
-    <input type="text" id = "nome"><br>
+    <input type="text" id = "nome" placeholder = "Nome"><br>
     <p>E-mail:</p>
-    <input type="text" id = "email"><br>
+    <input type="text" id = "email" placeholder = "E-mail"><br>
     <p>Senha:</p>
     <div id="camposenha">
     <input type="password" id="senha" placeholder = "Senha">
     <button type="button" onmousedown = "switchsenha()" onmouseup = "switchsenha1()">
     <img src = "eye-close.png">
+    </button>
     </div>
     <p>Confirme a senha:</p>
-    <input type="text" id = "senha1"><br><br>
+    <input type="text" id = "senha1" placeholder = "Confirme a senha"><br><br>
     <p><button type="button" onclick = "entrarcad()">Cadastrar</button></p>
+    
     `
     }
 }
@@ -54,7 +64,7 @@ function entrarcad() {
             window.alert("erro login")
         }
     } else {
-        nome = document.getElementById('nome');
+        nome = document.getElementById('email').value;
         if(document.getElementById('nome').value != "" && document.getElementById('email').value != "" && document.getElementById('senha').value != "" && document.getElementById('senha').value == document.getElementById('senha1').value) {
             
             sessionStorage.setItem("usuario", nome);
